@@ -10,12 +10,6 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-# 4. 시스템 패키지 설치 (옵션)
-# OpenCV나 이미지 처리 관련 패키지가 추후 추가될 것을 대비해 관련 라이브러리 설치
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
 
 # 5. 종속성 파일 복사 및 패키지 설치
 # 소스코드 전체를 먼저 복사하지 않는 이유: Docker Layer 캐시를 최대한 활용하기 위함.
