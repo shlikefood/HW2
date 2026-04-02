@@ -1,0 +1,2460 @@
+[2026-04-02 12:52:02Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.credentials'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'Runner': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.runner'
+[2026-04-02 12:52:02Z INFO Worker] Version: 2.333.1
+[2026-04-02 12:52:02Z INFO Worker] Commit: 6792966801e8925346735b68c03bf9f347af4646
+[2026-04-02 12:52:02Z INFO Worker] Culture: en-US
+[2026-04-02 12:52:02Z INFO Worker] UI Culture: ko-KR
+[2026-04-02 12:52:02Z INFO Worker] Waiting to receive the job message from the channel.
+[2026-04-02 12:52:02Z INFO ProcessChannel] Receiving message of length 20807, with hash '001f553dc224db9b540c61dc96bc32065d0e7a03cd53c1c91825d8e90e1f5f17'
+[2026-04-02 12:52:02Z INFO Worker] Message received.
+[2026-04-02 12:52:02Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/ci.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "docker/login-action",
+        "ref": "v2",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 50,
+        "col": 15,
+        "lit": "🔐 Docker Hub 로그인 (권한 획득)"
+      },
+      "contextName": "__docker_login-action",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 53,
+        "col": 11,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 53,
+              "col": 11,
+              "lit": "username"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 53,
+              "col": 21,
+              "expr": "secrets.DOCKERHUB_USERNAME"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 54,
+              "col": 11,
+              "lit": "password"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 54,
+              "col": 21,
+              "expr": "secrets.DOCKERHUB_TOKEN"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "f1fee9ff-939f-48f7-99cf-86b7166e7b23",
+      "name": "__docker_login-action"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 56,
+        "col": 15,
+        "lit": "🛑 기존 컨테이너 정리 (있는 경우만)"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 59,
+              "col": 14,
+              "lit": "docker rm -f age-prediction-container"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "continueOnError": {
+        "type": 5,
+        "file": 1,
+        "line": 60,
+        "col": 28,
+        "bool": true
+      },
+      "id": "24505754-ced9-4992-bdb4-317967c2a858",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 62,
+        "col": 15,
+        "lit": "🚀 최신 이미지 다운로드 및 실행"
+      },
+      "contextName": "__run_2",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 63,
+              "col": 14,
+              "expr": "format('docker pull {0}/mlops-age-prediction:latest\ndocker run -d --name age-prediction-container -p 8000:8000 {1}/mlops-age-prediction:latest\n', secrets.DOCKERHUB_USERNAME, secrets.DOCKERHUB_USERNAME)"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "78f1b6dd-9e02-4dbe-9a26-3bb98a10f521",
+      "name": "__run_2"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DOCKERHUB_TOKEN": {
+      "value": "***",
+      "isSecret": true
+    },
+    "DOCKERHUB_USERNAME": {
+      "value": "***",
+      "isSecret": true
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "actions.runner.requirenode24": {
+      "value": "false"
+    },
+    "actions.runner.usenode24bydefault": {
+      "value": "false"
+    },
+    "actions.runner.warnonnode20": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_batch_action_resolution": {
+      "value": "false"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "true"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_runner_compare_workflow_parser": {
+      "value": "false"
+    },
+    "actions_runner_deprecate_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_emit_composite_markers": {
+      "value": "false"
+    },
+    "actions_runner_kill_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_node20_removal_date": {
+      "value": ""
+    },
+    "actions_runner_node24_default_date": {
+      "value": ""
+    },
+    "actions_service_container_command": {
+      "value": "true"
+    },
+    "actions_set_orchestration_id_env_for_actions": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_snapshot_preflight_hosted_runner_check": {
+      "value": "false"
+    },
+    "actions_snapshot_preflight_image_gen_pool_check": {
+      "value": "false"
+    },
+    "actions_use_bearer_token_for_codeload": {
+      "value": "false"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "deploy"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "4cee04e2-d9e6-484f-b652-64c78f498c74.deploy.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "🚀 Deploy to Local (Self-hosted)"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "4cee04e2-d9e6-484f-b652-64c78f498c74",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "4cee04e2-d9e6-484f-b652-64c78f498c74",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "d351372e-87ef-5403-b6c2-2f97a6c5aa15",
+  "jobDisplayName": "🚀 Deploy to Local (Self-hosted)",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/7x27LUljsE6m77bhNsZQQBdVyzo9GvzG5OG9mXfgUmKhWfFxrZ/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus25.actions.githubusercontent.com/7x27LUljsE6m77bhNsZQQBdVyzo9GvzG5OG9mXfgUmKhWfFxrZ/",
+          "GenerateIdTokenUrl": "",
+          "ConnectivityChecks": "[\"https://broker.actions.githubusercontent.com/health\",\"https://token.actions.githubusercontent.com/ready\",\"https://run.actions.githubusercontent.com/health\"]"
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-2-azure-eastus.actions.githubusercontent.com/182/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "e73d9e03cf67c38fc7c73db2dbb1a75b1992880a"
+        },
+        {
+          "k": "repository",
+          "v": "***/HW2"
+        },
+        {
+          "k": "repository_owner",
+          "v": "***"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "109991601"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/***/HW2.git"
+        },
+        {
+          "k": "run_id",
+          "v": "23901280968"
+        },
+        {
+          "k": "run_number",
+          "v": "3"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "109991601"
+        },
+        {
+          "k": "actor",
+          "v": "***"
+        },
+        {
+          "k": "workflow",
+          "v": "CI/CD Pipeline - Build and Push Docker Image"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "e73d9e03cf67c38fc7c73db2dbb1a75b1992880a"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "3c875e4efb38c9052d6d404c6a7e1f5b4cdd14bd"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "***@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Csh0513"
+                              },
+                              {
+                                "k": "username",
+                                "v": "***"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "***@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Csh0513"
+                              },
+                              {
+                                "k": "username",
+                                "v": "***"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "e73d9e03cf67c38fc7c73db2dbb1a75b1992880a"
+                        },
+                        {
+                          "k": "message",
+                          "v": "Add local deployment job"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2026-04-02T21:51:35+09:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "03d14e60af063cdd106427f7eaeb09de99adfb3b"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/***/HW2/commit/e73d9e03cf67c38fc7c73db2dbb1a75b1992880a"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/***/HW2/compare/3c875e4efb38...e73d9e03cf67"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "***@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Csh0513"
+                          },
+                          {
+                            "k": "username",
+                            "v": "***"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "***@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Csh0513"
+                          },
+                          {
+                            "k": "username",
+                            "v": "***"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "e73d9e03cf67c38fc7c73db2dbb1a75b1992880a"
+                    },
+                    {
+                      "k": "message",
+                      "v": "Add local deployment job"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2026-04-02T21:51:35+09:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "03d14e60af063cdd106427f7eaeb09de99adfb3b"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/***/HW2/commit/e73d9e03cf67c38fc7c73db2dbb1a75b1992880a"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "109991601+***@users.noreply.github.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "***"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/***/HW2/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/***/HW2/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/***/HW2/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/***/HW2.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/***/HW2/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/***/HW2/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/***/HW2/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/***/HW2/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/***/HW2/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/***/HW2/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1774945014.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/***/HW2/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/***/HW2/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/***/HW2/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/***/HW2/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "***/HW2"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/***/HW2.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pull_requests",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/***/HW2/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/***/HW2"
+                    },
+                    {
+                      "k": "id",
+                      "v": 1196985503.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/***/HW2/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/***/HW2/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/***/HW2/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/***/HW2/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/***/HW2/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "Python"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/***/HW2/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/***/HW2/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/***/HW2/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "HW2"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOR1iMnw"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/***/HW2/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/109991601?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "109991601+***@users.noreply.github.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/***/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/***/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/***/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/***/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/***"
+                          },
+                          {
+                            "k": "id",
+                            "v": 109991601.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "***"
+                          },
+                          {
+                            "k": "name",
+                            "v": "***"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "U_kgDOBo5WsQ"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/***/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/***/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/***/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/***/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/***/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/***"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pull_request_creation_policy",
+                      "v": "all"
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/***/HW2/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1775134297.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/***/HW2/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 4.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:***/HW2.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/***/HW2/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/***/HW2/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/***/HW2/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/***/HW2/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/***/HW2"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/***/HW2/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/***/HW2/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2026-04-02T08:58:44Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/***/HW2"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/109991601?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/***/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/***/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/***/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/***/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/***"
+                    },
+                    {
+                      "k": "id",
+                      "v": 109991601.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "***"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "U_kgDOBo5WsQ"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/***/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/***/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/***/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/***/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/***/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/***"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "***/HW2/.github/workflows/ci.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "e73d9e03cf67c38fc7c73db2dbb1a75b1992880a"
+        },
+        {
+          "k": "repository_id",
+          "v": "1196985503"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "***"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 69698344374.0
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2,
+      "d": [
+        {
+          "k": "build-and-push",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "result",
+                "v": "success"
+              },
+              {
+                "k": "outputs",
+                "v": {
+                  "t": 2
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOBo5WsQ"
+}
+[2026-04-02 12:52:02Z INFO JobRunner] Job ID d351372e-87ef-5403-b6c2-2f97a6c5aa15
+[2026-04-02 12:52:02Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin\Runner.Worker.dll
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO ConfigurationStore] binPath: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO ConfigurationStore] RootFolder: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'Runner': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.runner'
+[2026-04-02 12:52:02Z INFO ConfigurationStore] ConfigFilePath: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.runner
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'MigratedRunner': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.runner_migrated'
+[2026-04-02 12:52:02Z INFO ConfigurationStore] MigratedConfigFilePath: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.runner_migrated
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.credentials'
+[2026-04-02 12:52:02Z INFO ConfigurationStore] CredFilePath: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.credentials
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.credentials_migrated'
+[2026-04-02 12:52:02Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.credentials_migrated
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'Service': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.service'
+[2026-04-02 12:52:02Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.service
+[2026-04-02 12:52:02Z INFO ConfigurationStore] Read setting file: 393 chars
+[2026-04-02 12:52:02Z INFO JobRunner] Initializing launch client
+[2026-04-02 12:52:02Z INFO JobServerQueue] Initializing results client
+[2026-04-02 12:52:02Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2026-04-02 12:52:02Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2026-04-02 12:52:02Z INFO JobServerQueue] Start process web console line queue.
+[2026-04-02 12:52:02Z INFO JobServerQueue] Start process file upload queue.
+[2026-04-02 12:52:02Z INFO JobServerQueue] Start results file upload queue.
+[2026-04-02 12:52:02Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-04-02 12:52:02Z INFO JobServerQueue] Start process timeline update queue.
+[2026-04-02 12:52:02Z INFO ExecutionContext] Initializing Job context
+[2026-04-02 12:52:02Z INFO ExecutionContext] Initialize GitHub context
+[2026-04-02 12:52:02Z INFO ExecutionContext] Initialize Env context
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:02Z INFO JobRunner] Starting the job execution context.
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO JobRunner] Validating directory permissions for: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Tools': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_tool'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:02Z INFO JobRunner] Getting job extension.
+[2026-04-02 12:52:02Z INFO JobRunner] Initialize job. Getting all job steps.
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.credentials'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known config file 'SetupInfo': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\.setup_info'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO PipelineDirectoryManager] Loading tracking config if exists: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_PipelineMapping\***/HW2\PipelineFolder.json
+[2026-04-02 12:52:02Z INFO PipelineDirectoryManager] Creating a new tracking config file.
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO PipelineDirectoryManager] Creating pipeline directory.
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO PipelineDirectoryManager] Creating workspace directory.
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO JobExtension] Downloading actions
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:02Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:02Z INFO Worker] Listening for cancel message from the channel.
+[2026-04-02 12:52:02Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2026-04-02 12:52:03Z INFO ResultServer] Successfully started websocket client.
+[2026-04-02 12:52:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e74e67e7-0ca8-41c3-9cf4-35001cba28df', success rate: 1/1.
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:03Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:03Z INFO ActionManager] Save archive 'https://api.github.com/repos/docker/login-action/zipball/465a07811f14bebb1938fbed4728c6a1ff8901fc' into C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions\_temp_77ae4516-2bac-4f32-bb0e-015705e27c0e\aaf37ff2-b7f4-4d24-b12a-b09abfe7b2a2.zip.
+[2026-04-02 12:52:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e74e67e7-0ca8-41c3-9cf4-35001cba28df', success rate: 1/1.
+[2026-04-02 12:52:03Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2026-04-02 12:52:04Z INFO ActionManager] Request URL: https://api.github.com/repos/docker/login-action/zipball/465a07811f14bebb1938fbed4728c6a1ff8901fc X-GitHub-Request-Id: F3A6:136F75:12989:96D92:69CE6674 Http Status: OK
+[2026-04-02 12:52:04Z INFO ActionManager] Finished getting action repository.
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-04-02 12:52:04Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 21,
+          "col": 14,
+          "lit": "auto"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 23,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-04-02 12:52:04Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:04Z INFO ActionManager] Load action that reference repository from 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions\docker\login-action\v2'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 21,
+          "col": 14,
+          "lit": "auto"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 23,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-04-02 12:52:04Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-04-02 12:52:04Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-04-02 12:52:04Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-04-02 12:52:04Z INFO JobExtension] Adding .
+[2026-04-02 12:52:04Z INFO JobExtension] Adding .
+[2026-04-02 12:52:04Z INFO JobExtension] Adding .
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO JobExtension] Total accessible running process: 426.
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO JobExtension] Start checking server connectivity.
+[2026-04-02 12:52:04Z INFO JobExtension] Check server connectivity for https://broker.actions.githubusercontent.com/health.
+[2026-04-02 12:52:04Z INFO JobExtension] Check server connectivity for https://token.actions.githubusercontent.com/ready.
+[2026-04-02 12:52:04Z INFO JobExtension] Check server connectivity for https://run.actions.githubusercontent.com/health.
+[2026-04-02 12:52:04Z INFO JobExtension] Start checking service connectivity in background.
+[2026-04-02 12:52:04Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "e74e67e7-0ca8-41c3-9cf4-35001cba28df",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2026-04-02T12:52:02.8488316Z",
+  "finishTime": "2026-04-02T12:52:04.7074902Z"
+}.
+[2026-04-02 12:52:04Z INFO JobRunner] Total job steps: 3.
+[2026-04-02 12:52:04Z INFO JobRunner] Run all job steps.
+[2026-04-02 12:52:04Z INFO StepsRunner] Processing step: DisplayName='🔐 Docker Hub 로그인 (권한 획득)'
+[2026-04-02 12:52:04Z INFO StepsRunner] Evaluating: success()
+[2026-04-02 12:52:04Z INFO StepsRunner] Result: true
+[2026-04-02 12:52:04Z INFO StepsRunner] Starting the step.
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-02 12:52:04Z INFO StepsRunner] Location: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   File name: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper] Process started with process id 60932, waiting for process exit.
+[2026-04-02 12:52:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e74e67e7-0ca8-41c3-9cf4-35001cba28df', success rate: 1/1.
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper] Finished process 60932 with exit code 0, and elapsed time 00:00:00.0396909.
+[2026-04-02 12:52:04Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:04Z INFO ActionManager] Load action that reference repository from 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions\docker\login-action\v2'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 21,
+          "col": 14,
+          "lit": "auto"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 23,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-04-02 12:52:04Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-04-02 12:52:04Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-04-02 12:52:04Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-04-02 12:52:04Z INFO ExecutionContext] Reserve record order 5 to 8 for post job actions.
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:04Z INFO ExecutionContext] Write event payload to C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:04Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Input 'registry': default value evaluate result: ""
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Input 'ecr': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 21,
+  "col": 14,
+  "lit": "auto"
+}
+[2026-04-02 12:52:04Z INFO ActionManifestManagerLegacy] Input 'logout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 25,
+  "col": 14,
+  "lit": "true"
+}
+[2026-04-02 12:52:04Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-02 12:52:04Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:04Z INFO HostContext] Well known directory 'Externals': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\externals'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\externals\node20\bin\node.exe'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Arguments: '"C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions\docker\login-action\v2\dist/index.js"'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\HW2\HW2'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:04Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:04Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-02 12:52:04Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\blocks\4cee04e2-d9e6-484f-b652-64c78f498c74_e74e67e7-0ca8-41c3-9cf4-35001cba28df.1
+[2026-04-02 12:52:04Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-04-02 12:52:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1fee9ff-939f-48f7-99cf-86b7166e7b23', success rate: 1/1.
+[2026-04-02 12:52:05Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-04-02 12:52:06Z INFO ProcessInvokerWrapper] Process started with process id 37684, waiting for process exit.
+[2026-04-02 12:52:06Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1fee9ff-939f-48f7-99cf-86b7166e7b23', success rate: 1/1.
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper] Finished process 37684 with exit code 0, and elapsed time 00:00:04.9875439.
+[2026-04-02 12:52:09Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_ff336e50-7a59-4584-80a8-23daceeb8670) is empty; skipping attachment upload
+[2026-04-02 12:52:09Z INFO StepsRunner] Step result: 
+[2026-04-02 12:52:09Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "docker/login-action",
+  "ref": "v2",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "f1fee9ff-939f-48f7-99cf-86b7166e7b23",
+  "stepContextName": "__docker_login-action",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 6,
+  "startTime": "2026-04-02T12:52:04.7158915Z",
+  "finishTime": "2026-04-02T12:52:09.8195557Z"
+}.
+[2026-04-02 12:52:09Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-04-02 12:52:09Z INFO StepsRunner] Current state: job state = ''
+[2026-04-02 12:52:09Z INFO StepsRunner] Processing step: DisplayName='🛑 기존 컨테이너 정리 (있는 경우만)'
+[2026-04-02 12:52:09Z INFO StepsRunner] Evaluating: success()
+[2026-04-02 12:52:09Z INFO StepsRunner] Result: true
+[2026-04-02 12:52:09Z INFO StepsRunner] Starting the step.
+[2026-04-02 12:52:09Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:09Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:09Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:09Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-02 12:52:09Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-04-02 12:52:09Z INFO StepsRunner] Location: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   File name: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:09Z INFO ProcessInvokerWrapper] Process started with process id 60012, waiting for process exit.
+[2026-04-02 12:52:09Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-02 12:52:09Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\blocks\4cee04e2-d9e6-484f-b652-64c78f498c74_f1fee9ff-939f-48f7-99cf-86b7166e7b23.1
+[2026-04-02 12:52:09Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1fee9ff-939f-48f7-99cf-86b7166e7b23', success rate: 1/1.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Finished process 60012 with exit code 0, and elapsed time 00:00:00.1054334.
+[2026-04-02 12:52:10Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ExecutionContext] Write event payload to C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-02 12:52:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-02 12:52:10Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-02 12:52:10Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-02 12:52:10Z INFO ScriptHandler] Location: 'C:\windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-02 12:52:10Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-02 12:52:10Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-02 12:52:10Z INFO ScriptHandler] Location: 'C:\windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   File name: 'C:\windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\aed74ac6-17e9-4e44-8614-87f8269228ce.ps1'"'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\HW2\HW2'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Process started with process id 54728, waiting for process exit.
+[2026-04-02 12:52:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '24505754-ced9-4992-bdb4-317967c2a858', success rate: 1/1.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Finished process 54728 with exit code 1, and elapsed time 00:00:00.2887770.
+[2026-04-02 12:52:10Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_ff63c66b-7129-4a25-9a68-e2c1d308ce45) is empty; skipping attachment upload
+[2026-04-02 12:52:10Z INFO ExecutionContext] Updated step result (continue on error)
+[2026-04-02 12:52:10Z INFO StepsRunner] Step result: Succeeded
+[2026-04-02 12:52:10Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "24505754-ced9-4992-bdb4-317967c2a858",
+  "stepContextName": "__run",
+  "result": "succeeded",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-04-02T12:52:09.8252496Z",
+  "finishTime": "2026-04-02T12:52:10.4560268Z"
+}.
+[2026-04-02 12:52:10Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-04-02 12:52:10Z INFO StepsRunner] Current state: job state = ''
+[2026-04-02 12:52:10Z INFO StepsRunner] Processing step: DisplayName='🚀 최신 이미지 다운로드 및 실행'
+[2026-04-02 12:52:10Z INFO StepsRunner] Evaluating: success()
+[2026-04-02 12:52:10Z INFO StepsRunner] Result: true
+[2026-04-02 12:52:10Z INFO StepsRunner] Starting the step.
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-02 12:52:10Z INFO StepsRunner] Location: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   File name: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Process started with process id 59396, waiting for process exit.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Finished process 59396 with exit code 0, and elapsed time 00:00:00.0101177.
+[2026-04-02 12:52:10Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ExecutionContext] Write event payload to C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-02 12:52:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-02 12:52:10Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-02 12:52:10Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-02 12:52:10Z INFO ScriptHandler] Location: 'C:\windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-02 12:52:10Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-02 12:52:10Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-02 12:52:10Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-02 12:52:10Z INFO ScriptHandler] Location: 'C:\windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   File name: 'C:\windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\b134ea3b-9702-48fa-a3d4-2e5b828adb97.ps1'"'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\HW2\HW2'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '24505754-ced9-4992-bdb4-317967c2a858', success rate: 1/1.
+[2026-04-02 12:52:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '78f1b6dd-9e02-4dbe-9a26-3bb98a10f521', success rate: 1/1.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Process started with process id 60488, waiting for process exit.
+[2026-04-02 12:52:10Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '78f1b6dd-9e02-4dbe-9a26-3bb98a10f521', success rate: 1/1.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Finished process 60488 with exit code 1, and elapsed time 00:00:00.2718973.
+[2026-04-02 12:52:10Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_7d82dedb-5218-45f4-8b63-0b71466142aa) is empty; skipping attachment upload
+[2026-04-02 12:52:10Z INFO StepsRunner] Step result: Failed
+[2026-04-02 12:52:10Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "78f1b6dd-9e02-4dbe-9a26-3bb98a10f521",
+  "stepContextName": "__run_2",
+  "result": "failed",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-04-02T12:52:10.4584231Z",
+  "finishTime": "2026-04-02T12:52:10.7739343Z"
+}.
+[2026-04-02 12:52:10Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2026-04-02 12:52:10Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-04-02 12:52:10Z INFO StepsRunner] Processing step: DisplayName='Post 🔐 Docker Hub 로그인 (권한 획득)'
+[2026-04-02 12:52:10Z INFO StepsRunner] Evaluating: always()
+[2026-04-02 12:52:10Z INFO StepsRunner] Result: true
+[2026-04-02 12:52:10Z INFO StepsRunner] Starting the step.
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-02 12:52:10Z INFO StepsRunner] Location: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   File name: 'C:\windows\system32\chcp.COM'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Process started with process id 27924, waiting for process exit.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Finished process 27924 with exit code 0, and elapsed time 00:00:00.0104278.
+[2026-04-02 12:52:10Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:10Z INFO ActionManager] Load action that reference repository from 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions\docker\login-action\v2'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Actions': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions'
+[2026-04-02 12:52:10Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-04-02 12:52:10Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-04-02 12:52:10Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 21,
+          "col": 14,
+          "lit": "auto"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 23,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-04-02 12:52:10Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-04-02 12:52:10Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-04-02 12:52:10Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ExecutionContext] Write event payload to C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Work': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Temp': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp'
+[2026-04-02 12:52:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-02 12:52:10Z INFO ActionManifestManagerLegacy] Input 'registry': default value evaluate result: ""
+[2026-04-02 12:52:10Z INFO ActionManifestManagerLegacy] Input 'ecr': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 21,
+  "col": 14,
+  "lit": "auto"
+}
+[2026-04-02 12:52:10Z INFO ActionManifestManagerLegacy] Input 'logout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 25,
+  "col": 14,
+  "lit": "true"
+}
+[2026-04-02 12:52:10Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-02 12:52:10Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:10Z INFO HostContext] Well known directory 'Externals': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\externals'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\externals\node20\bin\node.exe'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Arguments: '"C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_actions\docker\login-action\v2\dist/index.js"'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\HW2\HW2'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-02 12:52:10Z INFO ProcessInvokerWrapper] Process started with process id 35608, waiting for process exit.
+[2026-04-02 12:52:10Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2026-04-02 12:52:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record '78f1b6dd-9e02-4dbe-9a26-3bb98a10f521', success rate: 1/1.
+[2026-04-02 12:52:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6a6eaddd-65cd-444c-b032-c320fc89ee0e', success rate: 1/1.
+[2026-04-02 12:52:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6a6eaddd-65cd-444c-b032-c320fc89ee0e', success rate: 1/1.
+[2026-04-02 12:52:11Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-02 12:52:11Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\blocks\4cee04e2-d9e6-484f-b652-64c78f498c74_24505754-ced9-4992-bdb4-317967c2a858.1
+[2026-04-02 12:52:11Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:11Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-02 12:52:11Z INFO ProcessInvokerWrapper] Finished process 35608 with exit code 0, and elapsed time 00:00:01.1525990.
+[2026-04-02 12:52:11Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_6d8ce793-ca62-4da6-abcc-91b3701a0832) is empty; skipping attachment upload
+[2026-04-02 12:52:11Z INFO StepsRunner] Step result: 
+[2026-04-02 12:52:11Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "docker/login-action",
+  "ref": "v2",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "6a6eaddd-65cd-444c-b032-c320fc89ee0e",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2026-04-02T12:52:10.7756968Z",
+  "finishTime": "2026-04-02T12:52:11.9540273Z"
+}.
+[2026-04-02 12:52:11Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-04-02 12:52:11Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-04-02 12:52:11Z INFO JobRunner] Finalize job.
+[2026-04-02 12:52:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:11Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:11Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:11Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:11Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:11Z INFO JobExtension] Initialize Env context
+[2026-04-02 12:52:11Z INFO JobExtension] Initialize steps context
+[2026-04-02 12:52:11Z INFO JobExtension] Total accessible running process: 425.
+[2026-04-02 12:52:11Z INFO JobExtension] Wait for all connectivity checks to finish.
+[2026-04-02 12:52:11Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-04-02 12:52:11Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-04-02 12:52:11Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-04-02 12:52:11Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "21e5e40e-1cb0-4cbd-a8d9-e27d0f6729af",
+  "result": "succeeded",
+  "errorMessages": [
+    "Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: docker/login-action@v2. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the r"
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-04-02T12:52:11.9590435Z",
+  "finishTime": "2026-04-02T12:52:11.9800747Z"
+}.
+[2026-04-02 12:52:11Z INFO JobRunner] Job result after all job steps finish: Failed
+[2026-04-02 12:52:11Z INFO JobRunner] Completing the job execution context.
+[2026-04-02 12:52:11Z INFO JobRunner] Shutting down the job server queue.
+[2026-04-02 12:52:11Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2026-04-02 12:52:12Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-02 12:52:12Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\blocks\4cee04e2-d9e6-484f-b652-64c78f498c74_78f1b6dd-9e02-4dbe-9a26-3bb98a10f521.1
+[2026-04-02 12:52:12Z INFO JobServerQueue] Tried to upload 2 file(s) to results, success rate: 2/2.
+[2026-04-02 12:52:13Z INFO JobServerQueue] All queue process task stopped.
+[2026-04-02 12:52:13Z INFO JobServerQueue] Try to append 1 batches web console lines for record '21e5e40e-1cb0-4cbd-a8d9-e27d0f6729af', success rate: 1/1.
+[2026-04-02 12:52:13Z INFO JobServerQueue] Web console line queue drained.
+[2026-04-02 12:52:13Z INFO JobServerQueue] Uploading 3 files in one shot.
+[2026-04-02 12:52:13Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2026-04-02 12:52:13Z INFO JobServerQueue] File upload queue drained.
+[2026-04-02 12:52:13Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-04-02 12:52:13Z INFO JobServerQueue] Uploading 3 file(s) in one shot through results service.
+[2026-04-02 12:52:13Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-02 12:52:13Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\blocks\4cee04e2-d9e6-484f-b652-64c78f498c74_6a6eaddd-65cd-444c-b032-c320fc89ee0e.1
+[2026-04-02 12:52:14Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-02 12:52:14Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\blocks\4cee04e2-d9e6-484f-b652-64c78f498c74_21e5e40e-1cb0-4cbd-a8d9-e27d0f6729af.1
+[2026-04-02 12:52:15Z INFO JobServerQueue] Got a job log file to send to results service.
+[2026-04-02 12:52:15Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\blocks\4cee04e2-d9e6-484f-b652-64c78f498c74_d351372e-87ef-5403-b6c2-2f97a6c5aa15.1
+[2026-04-02 12:52:16Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2026-04-02 12:52:16Z INFO JobServerQueue] Results upload queue drained.
+[2026-04-02 12:52:16Z INFO JobServerQueue] Timeline update queue drained.
+[2026-04-02 12:52:16Z INFO JobServerQueue] Disposing job server ...
+[2026-04-02 12:52:16Z INFO JobServerQueue] Disposing results server ...
+[2026-04-02 12:52:16Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2026-04-02 12:52:16Z INFO TempDirectoryManager] Cleaning runner temp folder: C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_work\_temp
+[2026-04-02 12:52:16Z INFO HostContext] Well known directory 'Bin': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\bin'
+[2026-04-02 12:52:16Z INFO HostContext] Well known directory 'Root': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner'
+[2026-04-02 12:52:16Z INFO HostContext] Well known directory 'Diag': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag'
+[2026-04-02 12:52:16Z INFO HostContext] Well known config file 'Telemetry': 'C:\Users\shlik\OneDrive\바탕 화면\antigravity\HW2\actions-runner\_diag\.telemetry'
+[2026-04-02 12:52:16Z INFO JobRunner] Raising job completed against run service
+[2026-04-02 12:52:17Z INFO Worker] Job completed.

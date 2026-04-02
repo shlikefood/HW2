@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "shlikefood/HW2",
+  "pipelineDirectory": "HW2",
+  "workspaceDirectory": "HW2\\HW2",
+  "repositories": {
+    "shlikefood/HW2": {
+      "repositoryPath": "HW2\\HW2",
+      "lastRunOn": "04/02/2026 21:52:02 +09:00"
+    }
+  },
+  "lastRunOn": "04/02/2026 21:53:37 +09:00"
+}

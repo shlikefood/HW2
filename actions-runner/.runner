@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "WIN-1JEN9TJ7OK5",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus25.actions.githubusercontent.com/7x27LUljsE6m77bhNsZQQBdVyzo9GvzG5OG9mXfgUmKhWfFxrZ/",
+  "gitHubUrl": "https://github.com/shlikefood/HW2",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
