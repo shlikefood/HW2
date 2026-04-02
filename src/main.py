@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 import sys
 import os
@@ -15,9 +16,14 @@ app = FastAPI(
     description="MLOps 기반 가벼운 얼굴 인식 및 나이/성별 예측 서버"
 )
 
+# 정적 파일(HTML, CSS, JS) 서빙을 위한 디렉토리 마운트
+static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
 @app.get("/")
 def read_root():
-    return {"message": "나이 예측 API 서버가 정상적으로 실행되었습니다."}
+    # 루트 주소 접속 시 index.html 렌더링
+    return FileResponse(os.path.join(static_dir, "index.html"))
 
 @app.post("/predict/")
 async def predict_attributes_endpoint(file: UploadFile = File(...)):
